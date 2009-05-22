@@ -122,6 +122,8 @@ module SourceControl
       command << "--non-interactive" unless @interactive
       command << operation
       command += arguments.compact
+      command += [ '--username', @username ] if @username
+      command += [ '--password', @password ] if @password
       command
 
       execute_in_local_copy(command, options, &block)
